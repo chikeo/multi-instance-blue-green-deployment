@@ -16,3 +16,11 @@
   tags:
     - docker
 
+- name:  Server Hardening
+  hosts: ceros-ski-server
+  gather_facts: no
+  become: yes
+  roles:
+    - sshd
+  tags:
+    - sshd
