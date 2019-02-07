@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# 92-ceros-hello-devops-motd
+# To be copied to the directory /etc/update-motd.d on the target host.
+
+echo
+echo
+echo
+figlet Hello Ceros DevOps
+echo
+echo
+echo

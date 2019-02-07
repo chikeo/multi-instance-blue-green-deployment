@@ -1,0 +1,15 @@
+- name: Update apt cache
+  shell: apt update -y
+
+- name: Install list of packages
+  apt: name={{item}} state=present
+  with_items:
+       - figlet
+
+- name: Copy file 92-ceros-hello-devops-motd to directory /etc/update-motd.d/ on the target host
+  copy:
+    src: ../files/92-ceros-hello-devops-motd
+    dest: /etc/update-motd.d/92-ceros-hello-devops-motd
+    owner: root
+    group: root
+    mode: u+rwx,g+rx,g-w,o+rx,o-w

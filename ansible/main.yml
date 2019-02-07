@@ -1,0 +1,8 @@
+- name:  MOTD Customization
+  hosts: ceros-ski-server
+  gather_facts: no
+  become: yes
+  roles:
+    - motd
+  tags:
+    - motd
