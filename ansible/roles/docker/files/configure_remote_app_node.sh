@@ -14,25 +14,30 @@ apt-cache policy docker-ce
 
 sudo apt-get install -y docker-ce
 
-# sudo systemctl status docker
+sudo apt install -y awscli
 
-curl -O https://bootstrap.pypa.io/get-pip.py
+sudo apt install -y python3-pip
 
-python get-pip.py --user
+# Tried to persist the ENV variable LC_ALL but was not really taking effect on target node. Using transient ENV vars instead.
+# echo 'export LC_ALL=C' >> ~/.bash_profile
 
-echo 'export PATH=~/.local/bin:$PATH' >> ~/.bash_profile
+# cat ~/.bash_profile
 
-cat ~/.bash_profile
+# source ~/.bash_profile
 
-source ~/.bash_profile
+# Exported this to sort out Local errors when attempting to run pip3 install --upgrade awscli
+export LC_ALL=C
 
-pip --version
-
-pip install awscli --upgrade --user
+pip3 install --upgrade awscli
 
 aws --version
 
-aws configure
+# Running aws configure from Ansible does not interactively prompt the user for aws credentials. Using ENV vars instead.
+# aws configure
+
+# This is insecure but the insecurity can be remedied using Ansible Vault.
+export AWS_ACCESS_KEY_ID=AKIAJ3JKFVS3ARN4PZXQ
+export AWS_SECRET_ACCESS_KEY=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
 
 sudo $(aws ecr get-login --no-include-email --region us-east-2)
 

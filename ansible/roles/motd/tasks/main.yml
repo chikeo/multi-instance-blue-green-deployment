@@ -10,6 +10,6 @@
   copy:
     src: ../files/92-ceros-hello-devops-motd
     dest: /etc/update-motd.d/92-ceros-hello-devops-motd
-    owner: root
-    group: root
+    owner: ubuntu
+    group: ubuntu
     mode: u+rwx,g+rx,g-w,o+rx,o-w

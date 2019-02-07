@@ -1,2 +1,2 @@
 [ceros-ski-server]
-18.191.203.177 ansible_connection=ssh ansible_ssh_user=ubuntu
+3.17.205.155 ansible_connection=ssh ansible_ssh_user=ubuntu

@@ -2,9 +2,9 @@
   copy:
     src: ../files/configure_remote_app_node.sh
     dest: /home/ubuntu/configure_remote_app_node.sh
-    owner: root
-    group: root
+    owner: ubuntu
+    group: ubuntu
     mode: u+rwx,g+rx,g-w,o+rx,o-w
 
 - name: Execute configure_remote_app_node.sh to setup AWS CLI and Docker
-  command:  ./configure_remote_app_node.sh
+  command:  bash /home/ubuntu/configure_remote_app_node.sh

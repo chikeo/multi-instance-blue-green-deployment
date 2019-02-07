@@ -44,15 +44,15 @@ echo "-----------------------------------------------------------------------"
 echo " Dockerize the Ceros Ski NodeJS app and push to ECR Container Registry "
 echo "-----------------------------------------------------------------------"
 
-# npm install
+npm install
 
-# $(aws ecr get-login --no-include-email --region us-east-2)
+$(aws ecr get-login --no-include-email --region us-east-2)
 
-# docker build -t ceros/ski .
+docker build -t ceros/ski .
 
-# docker tag ceros/ski:latest 519826568739.dkr.ecr.us-east-2.amazonaws.com/ceros/ski:latest
+docker tag ceros/ski:latest 519826568739.dkr.ecr.us-east-2.amazonaws.com/ceros/ski:latest
 
-# docker push 519826568739.dkr.ecr.us-east-2.amazonaws.com/ceros/ski:latest
+docker push 519826568739.dkr.ecr.us-east-2.amazonaws.com/ceros/ski:latest
 
 
 # Setting up the resources for maintaining and locking the terraform remote state

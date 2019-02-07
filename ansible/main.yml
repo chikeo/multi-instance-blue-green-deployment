@@ -6,3 +6,13 @@
     - motd
   tags:
     - motd
+
+- name:  Docker Configuration (with AWS CLI setup for ECR Access)
+  hosts: ceros-ski-server
+  gather_facts: no
+  become: yes
+  roles:
+    - docker
+  tags:
+    - docker
+
