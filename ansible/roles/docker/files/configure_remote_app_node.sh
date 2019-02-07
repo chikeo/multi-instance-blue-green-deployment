@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Author: Chikelue Oji
 
 echo "------------------------------------------------------------------------------------"
 echo " Provisioning Ceros Ski App Nodes to install Docker and allow pulling from AWS ECR  "

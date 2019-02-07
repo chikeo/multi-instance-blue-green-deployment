@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Author: Chikelue Oji
 
 echo "------------------------------------------------------------------------------------"
 echo " Provisioning of EC2 Server(s) and deployment of NodeJS docker container on it/them "
