@@ -1,10 +1,7 @@
-- name: Update apt cache
-  shell: apt update -y
-
-- name: Install list of packages
-  apt: name={{item}} state=present
-  with_items:
-       - figlet
+- name: Update repositories cache and install the "figlet" package
+  apt:
+    name: figlet
+    update_cache: yes
 
 - name: Copy file 92-ceros-hello-devops-motd to directory /etc/update-motd.d/ on the target host
   copy:
