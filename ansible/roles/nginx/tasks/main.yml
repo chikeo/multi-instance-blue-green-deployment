@@ -1,0 +1,24 @@
+- name: Update repositories cache and install the "nginx" package
+  apt:
+    name: nginx
+    update_cache: yes
+
+- name: Copy file ceros-ski-appserver1-hosts to directory /tmp/ on the target host
+  copy:
+    src: ../../../ceros-ski-appserver1-hosts
+    dest: /tmp/ceros-ski-appserver1-hosts
+    owner: ubuntu
+    group: ubuntu
+    mode: u+rwx,g+rx,g-w,o+rx,o-w
+
+- name: Copy file ceros-ski-appserver2-hosts to directory /tmp/ on the target host
+  copy:
+    src: ../../../ceros-ski-appserver2-hosts
+    dest: /tmp/ceros-ski-appserver2-hosts
+    owner: ubuntu
+    group: ubuntu
+    mode: u+rwx,g+rx,g-w,o+rx,o-w
+
+- name: Execute a bash shell command on the already running container to configure the Nginx server as a load balancer
+  shell: echo "upstream servers { server $(head -n 1 /tmp/ceros-ski-appserver1-hosts):5000; server $(head -n 1 /tmp/ceros-ski-appserver2-hosts):5000; } server { listen 80; location / { proxy_pass http://servers; } }" > /etc/nginx/sites-available/default 
+  notify: restart nginx

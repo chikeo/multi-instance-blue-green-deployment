@@ -1,2 +1,6 @@
-[ceros-ski-server]
-3.17.205.155 ansible_connection=ssh ansible_ssh_user=ubuntu
+[ceros-ski-appserver1]
+18.223.102.179 ansible_connection=ssh ansible_ssh_user=ubuntu
+[ceros-ski-loadbalancer]
+18.219.134.48 ansible_connection=ssh ansible_ssh_user=ubuntu
+[ceros-ski-appserver2]
+18.188.90.59 ansible_connection=ssh ansible_ssh_user=ubuntu

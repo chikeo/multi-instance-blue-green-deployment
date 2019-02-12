@@ -8,6 +8,7 @@ echo
 echo
 echo
 figlet Hello Ceros DevOps
+curl icanhazip.com
 echo
 echo
 echo

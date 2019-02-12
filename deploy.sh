@@ -19,7 +19,9 @@ echo "yes" | terraform apply
 ansible_configure() {
 echo "Waiting for 300 seconds to allow for the EC2 machine to be fully provisioned and to come online"
 sleep 300
+
 ansible-playbook -i $ROOT_DIR/ansible/hosts $ROOT_DIR/ansible/main.yml -e 'ansible_python_interpreter=/usr/bin/python3'
+
 }
 
 while true; do
@@ -45,15 +47,15 @@ echo "-----------------------------------------------------------------------"
 echo " Dockerize the Ceros Ski NodeJS app and push to ECR Container Registry "
 echo "-----------------------------------------------------------------------"
 
-npm install
+# npm install
 
-$(aws ecr get-login --no-include-email --region us-east-2)
+# $(aws ecr get-login --no-include-email --region us-east-2)
 
-docker build -t ceros/ski .
+# docker build -t ceros/ski .
 
-docker tag ceros/ski:latest 519826568739.dkr.ecr.us-east-2.amazonaws.com/ceros/ski:latest
+# docker tag ceros/ski:latest 519826568739.dkr.ecr.us-east-2.amazonaws.com/ceros/ski:latest
 
-docker push 519826568739.dkr.ecr.us-east-2.amazonaws.com/ceros/ski:latest
+# docker push 519826568739.dkr.ecr.us-east-2.amazonaws.com/ceros/ski:latest
 
 
 # Setting up the resources for maintaining and locking the terraform remote state
@@ -61,8 +63,12 @@ echo " Setting up the resources for maintaining and locking the terraform remote
 cd terraform/remote-state/
 terraform init && terraform fmt && terraform validate 
 echo "yes" | terraform apply -var-file="starter-vars.tfvars"
-# terraform show
+terraform show
 cd ../../
+
+# Clear the hosts file for another deployment session
+echo "Clearing the hosts file for another deployment session"
+> $ROOT_DIR/ansible/hosts
 
 while true; do
     read -p "Do you wish to proceed with the server provisioning? " yn

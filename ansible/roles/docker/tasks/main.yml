@@ -8,3 +8,4 @@
 
 - name: Execute configure_remote_app_node.sh to setup AWS CLI and Docker
   command:  bash /home/ubuntu/configure_remote_app_node.sh
+  

@@ -5,3 +5,8 @@
 - name: Disable password login
   lineinfile: dest=/etc/ssh/sshd_config regexp="^#?PasswordAuthentication" line="PasswordAuthentication no"
   notify: restart sshd
+
+- name: Update repositories cache and install the "fail2ban" package
+  apt:
+    name: fail2ban
+    update_cache: yes

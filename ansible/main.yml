@@ -1,5 +1,5 @@
 - name:  MOTD Customization
-  hosts: ceros-ski-server
+  hosts: ceros-ski-appserver1:ceros-ski-appserver2:ceros-ski-loadbalancer
   gather_facts: no
   become: yes
   roles:
@@ -8,7 +8,7 @@
     - motd
 
 - name:  Docker Configuration (with AWS CLI setup for ECR Access)
-  hosts: ceros-ski-server
+  hosts: ceros-ski-appserver1:ceros-ski-appserver2:ceros-ski-loadbalancer
   gather_facts: no
   become: yes
   roles:
@@ -16,11 +16,20 @@
   tags:
     - docker
 
-- name:  Server Hardening
-  hosts: ceros-ski-server
+- name:  Server Hardening (SSH and Fail2Ban Installation and Configuration)
+  hosts: ceros-ski-appserver1:ceros-ski-appserver2:ceros-ski-loadbalancer
   gather_facts: no
   become: yes
   roles:
     - sshd
   tags:
     - sshd
+
+- name:  Nginx Docker Image Pull Setup
+  hosts: ceros-ski-loadbalancer
+  gather_facts: no
+  become: yes
+  roles:
+    - nginx
+  tags:
+    - nginx
