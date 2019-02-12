@@ -37,8 +37,8 @@ aws --version
 # aws configure
 
 # This is insecure but the insecurity can be remedied using Ansible Vault.
-export AWS_ACCESS_KEY_ID=AKIAJ3JKFVS3ARN4PZXQ
-export AWS_SECRET_ACCESS_KEY=qBNhBeqjNflF0TB/qJsnUM8E+f6nGEzZIt8ehC3a
+export AWS_ACCESS_KEY_ID=ENTER_YOUR_ACCESS_KEY_ID_HERE
+export AWS_SECRET_ACCESS_KEY=ENTER_YOUR_SECRET_ACCESS_KEY_HERE
 
 sudo $(aws ecr get-login --no-include-email --region us-east-2)
 
