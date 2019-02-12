@@ -51,3 +51,9 @@ Steps performed by the blue-green-deploy.sh Script
 8) Destroy appserver2 using Terraform.
 9) Recreate appserver2 with Terraform and configure it with the latest application deployment using Ansible.
 10) Reconfigure the Load balancer to pick up appserver2's new IP address.
+
+
+Issues and TODOs
+----------------
+1) The AWS credentials could be made more secure through the use of secrets management tools like Ansible vaults etc.
+2) The Blue/Green deployment script does not remove the IP addresses of the destroyed appservers from the hosts file. Therefore, you may see Ansible fail to reach those servers before going on to configure the servers that have been newly provisioned by Terraform.
