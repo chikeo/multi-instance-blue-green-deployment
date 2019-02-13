@@ -26,7 +26,7 @@ sudo apt install -y python3-pip
 
 # source ~/.bash_profile
 
-# Exported this to sort out Local errors when attempting to run pip3 install --upgrade awscli
+# Exported this to sort out Locale errors when attempting to run pip3 install --upgrade awscli
 export LC_ALL=C
 
 pip3 install --upgrade awscli
